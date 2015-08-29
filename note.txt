@@ -3,12 +3,20 @@ Theme:  You are the monster
 FEATURES
 	Brainstorm.
 	Jennifer roleplays.
+	Wireframe.
+	See profile picture.
 
 TODO
 	Jennifer plays a physical toy.
-	Wireframe.
-	See profile picture.
+	Model choice and answer.
+	Model dialogue.
 	Left button.  Right button.
+	Selecting button disables that button later.
+	Stop at end of each label.
+	Show and hide and play clips.
+	Replace text.  Replace layout.
+	Design each layout with text.   Button goes there.
+	Scroll chat message.  Push another chat message.
 	Menu to select from profile to talk about.
 	Chat bubbles from instant message.
 	See micro expression.
@@ -75,3 +83,13 @@ What would Jennifer want to play?
 			paperdoll of face parts:  nintendo mii
 		
 
+Sat 08/29/2015 
+10:07
+
+	Selecting button disables that button later.
+	Stop at end of each label.
+	Replace text.  Replace layout.
+	Design each layout with text.   Button goes there.
+	Scroll chat message.  Push another chat message.
+
+	Model 
