@@ -20,6 +20,7 @@ package
             return false;
         }
 
+        internal var microexpression:String;
         internal var listens:Object = {};
         internal var state:String;
         internal var states:Object = {};
@@ -59,16 +60,19 @@ package
         private function ask(topic:String):void
         {
             topics[topic] = false;
-            texts.youText = dialogue[topic].you;
-            texts.themText = dialogue[topic].them;
+            var context:Object = dialogue[topic];
+            texts.youText = context.you;
+            texts.themText = context.them;
             texts.doubtText = "Doubt";
             texts.trustText = "Trust";
+            microexpression = context.microexpression;
             state = "ask";
             listen();
         }
 
         internal function update(deltaSeconds:Number):void
         {
+            microexpression = null;
             health = Math.max(0.0, health - deltaSeconds * perSecond);
             texts = {};
             states = {};
@@ -92,10 +96,12 @@ package
                 else if ("ask" == state)
                 {
                     var action:String = selected.split("Button")[0];
-                    texts.youText = dialogue[topic][action].you;
-                    texts.themText = dialogue[topic][action].them;
+                    var context:Object = dialogue[topic][action];
+                    texts.youText = context.you;
+                    texts.themText = context.them;
                     texts.doubtText = "Doubt";
                     texts.trustText = "Trust";
+                    microexpression = context.microexpression;
                     state = action;
                     listen();
                 }

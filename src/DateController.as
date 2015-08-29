@@ -12,11 +12,6 @@ package
         {
             this.model = new DateModel();
             this.view = aView;
-            populate();
-        }
-
-        internal function populate():void
-        {
         }
 
         internal function update(deltaSeconds:Number):void
@@ -26,6 +21,7 @@ package
             Controller.setStates(view, model.texts, View.setText);
             Controller.setStates(view, model.listens, View.listen, this);
             View.setScaleX(view.healthMeterFill, model.health);
+            View.setState(view.microexpression, model.microexpression);
         }
 
         public function select(event:*):void

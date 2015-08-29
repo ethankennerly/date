@@ -86,7 +86,7 @@ package
 
         public static function setState(child:MovieClip, state:String):Boolean
         {
-            if (null != state && child.currentLabel != state)
+            if (null != state && "" != state && child.currentLabel != state)
             {
                 child.gotoAndPlay(state);
                 return true;
