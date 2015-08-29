@@ -97,6 +97,15 @@ package
             }
         }
 
+        public static function getState(child:MovieClip):String
+        {
+            if (child.currentLabel)
+            {
+                return child.currentLabel;
+            }
+            return null;
+        }
+
         public static function currentTarget(event:Event):*
         {
             return event.currentTarget;

@@ -29,6 +29,8 @@ package
         internal var topics:Object;
         internal var health:Number = 1.0;
         internal var perSecond:Number = 1.0 / 60.0;
+        private var action:String;
+        private var context:Object;
         private var selected:String;
         private var dialogue:Object = Dialogue.tree;
 
@@ -44,6 +46,7 @@ package
             topics.religion = true;
             topics.profession = true;
             topics.interest = true;
+            state = "start";
         }
 
         internal function listen():void
@@ -60,7 +63,7 @@ package
         private function ask(topic:String):void
         {
             topics[topic] = false;
-            var context:Object = dialogue[topic];
+            context = dialogue[topic];
             texts.youText = context.you;
             texts.themText = context.them;
             texts.doubtText = "Doubt";
@@ -70,21 +73,21 @@ package
             listen();
         }
 
-        internal function update(deltaSeconds:Number):void
+        internal function update(deltaSeconds:Number, previousState:String):void
         {
             microexpression = null;
-            health = Math.max(0.0, health - deltaSeconds * perSecond);
             texts = {};
             states = {};
             listens = {};
-            if (null == state)
+            health = Math.max(0.0, health - deltaSeconds * perSecond);
+            if (state == "start" && previousState == "menu")
             {
                 texts.nameText = dialogue.name;
                 texts.religionText = "Religion: " + dialogue.religion.name + "?";
                 texts.professionText = "Profession: " + dialogue.profession.name + "?";
                 texts.interestText = "Interest: " + dialogue.interest.name + "?";
-                state = "menu";
                 listen();
+                state = "menu";
             }
             if (null != selected)
             {
@@ -95,12 +98,16 @@ package
                 }
                 else if ("ask" == state)
                 {
-                    var action:String = selected.split("Button")[0];
-                    var context:Object = dialogue[topic][action];
+                    action = selected.split("Button")[0];
+                    context = dialogue[topic][action];
                     texts.youText = context.you;
                     texts.themText = context.them;
                     texts.doubtText = "Doubt";
                     texts.trustText = "Trust";
+                    if ("health" in context)
+                    {
+                        health = context.health;
+                    }
                     microexpression = context.microexpression;
                     state = action;
                     listen();
@@ -110,11 +117,11 @@ package
                     if (topic == "all")
                     {
                         initTopics();
-                        state = null;
+                        state = "start";
                     }
                     if (isAnyTrue(topics))
                     {
-                        state = null;
+                        state = "menu";
                     }
                     else
                     {

@@ -16,7 +16,7 @@ package
 
         internal function update(deltaSeconds:Number):void
         {
-            model.update(deltaSeconds);
+            model.update(deltaSeconds, View.getState(view));
             View.setState(view, model.state);
             Controller.setStates(view, model.texts, View.setText);
             Controller.setStates(view, model.listens, View.listen, this);
