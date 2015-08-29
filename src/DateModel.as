@@ -10,6 +10,8 @@ package
         internal var states:Object = {};
         internal var texts:Object = {};
         internal var topic:String;
+        internal var health:Number = 1.0;
+        internal var perSecond:Number = 1.0 / 60.0;
         private var selected:String;
         private var dialogue:Object = Dialogue.tree;
 
@@ -30,6 +32,7 @@ package
 
         internal function update(deltaSeconds:Number):void
         {
+            health -= deltaSeconds * perSecond;
             texts = {};
             states = {};
             listens = {};

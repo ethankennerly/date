@@ -158,6 +158,11 @@ package
             child.y = position.y;
         }
 
+        public static function setScaleX(child:DisplayObject, scaleX:Number):void
+        {
+            child.scaleX = scaleX;
+        }
+
         public static function getMilliseconds():int
         {
             return getTimer();

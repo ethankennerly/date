@@ -25,6 +25,7 @@ package
             View.setState(view, model.state);
             Controller.setStates(view, model.texts, View.setText);
             Controller.setStates(view, model.listens, View.listen, this);
+            View.setScaleX(view.healthMeterFill, model.health);
         }
 
         public function select(event:*):void
