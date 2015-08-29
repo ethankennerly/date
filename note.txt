@@ -1,0 +1,76 @@
+Theme:  You are the monster
+
+FEATURES
+	Brainstorm.
+	Jennifer roleplays.
+
+TODO
+	Jennifer plays a physical toy.
+	Wireframe.
+	See profile picture.
+	Left button.  Right button.
+	Menu to select from profile to talk about.
+	Chat bubbles from instant message.
+	See micro expression.
+	Faster response increases speed and score from blood meter.
+	See time meter as blood.
+
+REFERENCE GAMES
+	L.A. Noire
+	Micro-expressions trainer
+	Tinder
+	OkCupid
+	Coffee Meets Bagel
+	California Games:  Dating
+	Leisure Suit Larry
+	iPhone instance message
+	FaceTime
+
+REFERENCE STORIES
+	Interview with a Vampire
+
+What would Jennifer want to play?
+(Brainstorm with Torri Lindsay at Ludum Dare 33, August 21)
+
+	Interview with a Vampire:  
+	Vampire invites hosts to dinner.
+		???? Dialoge what?  how much?????
+		Three inputs:  Disprove.  Doubt.  Trust.
+			Swipe left:  Disprove, Swipe Down:  Doubt.  Swipe right:  Trust.
+				Buttons.
+		3 Photos.  
+			1 normal
+			1 priest
+			1 goth
+		vampire specific dating guide
+		vampire survival guide
+		who am i?  which characcter am i?
+		Dialogue is text message.
+		App:  If meet, then resolve.
+		First date.
+		First scene:  Public scene.  Private chateau.
+		Trustworthy human hosts.
+		Abhorrent human priests or werewolves, ghostbusters.
+		Dialogue.
+			Dramatic.  
+			Every exchange advances the story.
+		Branches
+			Collapsing items.
+			Menu
+			Composite:  Radix:  111..333.  Combination.
+				1	1	1
+				2	2	2
+				3	3	3
+		Portraits.
+			Microexpression:  flash another expression.
+		Probing for information.
+		Endgame:
+			Be attacked
+			Attack
+				Bite neck
+					Be stabbed by stake in the heart
+					
+		Basic emotion in a portrait
+			paperdoll of face parts:  nintendo mii
+		
+
