@@ -62,7 +62,6 @@ package
 
         private function ask(topic:String):void
         {
-            topics[topic] = false;
             context = dialogue[topic];
             texts.youText = context.you;
             texts.themText = context.them;
@@ -79,7 +78,10 @@ package
             texts = {};
             states = {};
             listens = {};
-            health = Math.max(0.0, health - deltaSeconds * perSecond);
+            if (state != "start") 
+            {
+                health = Math.max(0.0, Math.min(1.0, health - deltaSeconds * perSecond));
+            }
             if (state == "start" && previousState == "menu")
             {
                 texts.nameText = dialogue.name;
@@ -104,10 +106,11 @@ package
                     texts.themText = context.them;
                     texts.doubtText = "Doubt";
                     texts.trustText = "Trust";
-                    if ("health" in context)
+                    if (topics[topic] && "health" in context)
                     {
-                        health = context.health;
+                        health += context.health;
                     }
+                    topics[topic] = false;
                     microexpression = context.microexpression;
                     state = action;
                     listen();
