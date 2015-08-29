@@ -5,11 +5,27 @@ package
      */
     public class DateModel
     {
+        /**
+         * @return  If any true value.
+         */
+        public static function isAnyTrue(container:*):Boolean
+        {
+            for (var key:String in container)
+            {
+                if (container[key])
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
         internal var listens:Object = {};
         internal var state:String;
         internal var states:Object = {};
         internal var texts:Object = {};
         internal var topic:String;
+        internal var topics:Object;
         internal var health:Number = 1.0;
         internal var perSecond:Number = 1.0 / 60.0;
         private var selected:String;
@@ -17,6 +33,16 @@ package
 
         public function DateModel()
         {
+            initTopics();
+            new TestDateModel();
+        }
+
+        private function initTopics():void
+        {
+            topics = {};
+            topics.religion = true;
+            topics.profession = true;
+            topics.interest = true;
         }
 
         internal function listen():void
@@ -30,9 +56,20 @@ package
             }
         }
 
+        private function ask(topic:String):void
+        {
+            topics[topic] = false;
+            texts.youText = dialogue[topic].you;
+            texts.themText = dialogue[topic].them;
+            texts.doubtText = "Doubt";
+            texts.trustText = "Trust";
+            state = "ask";
+            listen();
+        }
+
         internal function update(deltaSeconds:Number):void
         {
-            health -= deltaSeconds * perSecond;
+            health = Math.max(0.0, health - deltaSeconds * perSecond);
             texts = {};
             states = {};
             listens = {};
@@ -50,12 +87,7 @@ package
                 if ("menu" == state)
                 {
                     topic = selected.split("Button")[0];
-                    texts.youText = dialogue[topic].you;
-                    texts.themText = dialogue[topic].them;
-                    texts.doubtText = "Doubt";
-                    texts.trustText = "Trust";
-                    state = "ask";
-                    listen();
+                    ask(topic);
                 }
                 else if ("ask" == state)
                 {
@@ -69,7 +101,21 @@ package
                 }
                 else
                 {
-                    state = null;
+                    if (topic == "all")
+                    {
+                        initTopics();
+                        state = null;
+                    }
+                    if (isAnyTrue(topics))
+                    {
+                        state = null;
+                    }
+                    else
+                    {
+                        state = "ask";
+                        topic = "all";
+                        ask(topic);
+                    }
                 }
                 selected = null;
             }

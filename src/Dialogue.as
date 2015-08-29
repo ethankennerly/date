@@ -15,8 +15,12 @@ package
                 doubt: {you: "You bonded with carbon and hydrogen?", them: "Yeah, and uh, oxygen, too."}
             },
             interest: {name: "Cooking", you: "How do you like cooking?", them: "I have this divine recipe for lamb!",
-                trust: {you: "Oh, I could sink my teeth into a lamb!", them: "How about a stake ... in your heart!"},
-                doubt: {you: "Lamb?  I like tender flesh, like yours!", them: "Gulp!"}
+                trust: {you: "Oh, I could sink my teeth into a lamb!", them: "I love lamb steak. Don't you?"},
+                doubt: {you: "Lamb?  I prefer ... tender flesh.", them: "Ahem."}
+            },
+            all: {you: "I feel like I know our chemistry.", them: "Want dinner and see what heats up?",
+                doubt: {you: "Holier than thous are not my type.", them: "I had a stake just for you..."},
+                trust: {you: "Wanna cook me dinner?", them: "How about a stake... in your heart!"}
             }
         }
     }
